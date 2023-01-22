@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+
+    <title>Guess the Cat</title>
+
+    <link rel="stylesheet" href="cat.css">
+    <script src="cat.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Guess the Cat</h1>
+
+    </header>
+
+    <main id="wrapper">
+        <p id="stdntID">Student ID: 220019198</p>
+
+    </main>
+
+    <!-- webpage footer -->
+    <footer>
+        <p id="stdntID">Student ID: 220019198</p>
+    </footer>
+</body>
+</html>

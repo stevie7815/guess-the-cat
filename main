@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+
+    <title>Guess the Catt</title>
+
+    <link rel="stylesheet" href="cat.css">
+    <script src="cat.js"></script>
+
+ <!--  <style>
+        html, body {
+            margin: auto;
+        }
+
+        * {
+            font-family: 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+        }
+
+        footer {
+            background-color: #688f4e;
+            color: #f4f1e9;
+            padding: 10px;
+            margin: 0;
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 75px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            color: #2b463c;
+        }
+
+        #stdntID {
+            font-weight: bold;
+        }
+
+        #wrapper {
+            font-family: helvetica, sans-serif;
+            width: 95%;
+            font-size: 18px;
+            margin: auto;
+            padding: 10px 30px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <header>
+        <h1>Guess the Cat</h1>
+
+    </header>
+
+    <main id="wrapper">
+        <p id="stdntID">Student ID: 220019198</p>
+
+    </main>
+
+    <!-- webpage footer -->
+    <footer>
+        <p id="stdntID">Student ID: 220019198</p>
+    </footer>
+</body>
+</html>

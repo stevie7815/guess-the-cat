@@ -1,0 +1,39 @@
+html,
+body {
+    margin: auto;
+}
+
+* {
+    font-family: 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: #688f4e;
+    color: #f4f1e9;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 75px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color: #2b463c;
+}
+
+#stdntID {
+    font-weight: bold;
+}
+
+#wrapper {
+    font-family: helvetica, sans-serif;
+    width: 95%;
+    font-size: 18px;
+    margin: auto;
+    padding: 10px 30px;
+}

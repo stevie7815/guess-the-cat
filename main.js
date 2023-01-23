@@ -1,4 +1,4 @@
-const url = `https://api.thecatapi.com/v1/images/search?limit=12`;
+const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
 
 const api_key = "live_qtoWFwBFjh3eaGRU0Vw49yQH13EHWpql5P2juMbgbthEutYOiXzu0OeYWc5xDxSK";
 
@@ -12,6 +12,8 @@ fetch(url, {
     return response.json();
   })
   .then((data) => {
+    console.log(data);
+/*
     let imagesData = data;
     imagesData.map(function (imageData) {
 
@@ -25,10 +27,11 @@ fetch(url, {
       gridCell.appendChild(image)
 
       document.getElementById('grid').appendChild(gridCell);
-
     });
+    */
   })
+
   .catch(function (error) {
-    console.log(error);
+    console.log("Fetch Error: ", error);
   });
 

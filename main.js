@@ -13,25 +13,68 @@ fetch(url, {
   })
   .then((data) => {
     console.log(data);
-/*
-    let imagesData = data;
-    imagesData.map(function (imageData) {
+    console.table(data);
+    displayBreed(data)
+    displayTrait(data)
 
-      let image = document.createElement('img');
-      //use the url from the image object
-      image.src = `${imageData.url}`;
 
-      let gridCell = document.createElement('div');
-      gridCell.classList.add('clmn');
-      gridCell.classList.add('clmnShadow');
-      gridCell.appendChild(image)
+    /*  let imagesData = data;
+      imagesData.map(function (imageData) {
+  
+        let image = document.createElement('img');
+        //use the url from the image object
+        image.src = `${imageData.url}`;
+  
+        let gridCell = document.createElement('div');
+        gridCell.classList.add('clmn');
+        gridCell.classList.add('clmnShadow');
+        gridCell.appendChild(image)
+  
+        document.getElementById('grid').appendChild(gridCell);
+  
+      });
+  */
 
-      document.getElementById('grid').appendChild(gridCell);
-    });
-    */
   })
 
   .catch(function (error) {
     console.log("Fetch Error: ", error);
   });
 
+
+function displayImage(data) {
+
+  const catImgDiv = document.getElementById("catImg");
+
+  const catImg = document.createElement("img");
+  catImg.src = data.url;
+  catBreedsDiv.appendChild(catImg);
+  document.body.style.backgroundImage = "url('" + data.url + "')";
+
+}
+
+
+function displayBreed(data) {
+
+  const catBreeds = data[0];
+
+  const catBreedsDiv = document.getElementById("catBreeds");
+
+  const breedName = catBreeds.breeds[0].name;
+  const printBreed = document.createElement("b");
+  printBreed.innerHTML = breedName;
+  catBreedsDiv.appendChild(printBreed);
+
+}
+
+function displayTrait(data) {
+  const catTrait = data[0];
+
+  const catTraitDiv = document.getElementById("catTrait");
+
+  const breedTrait = catTrait.breeds[0].temperament;
+  const printTrait = document.createElement("b");
+  printTrait.innerHTML = breedTrait;
+  catTraitDiv.appendChild(printTrait);
+
+}

@@ -1,4 +1,5 @@
-const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
+//const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
+const url = `https://api.thecatapi.com/v1/breeds`;
 const api_key = "live_qtoWFwBFjh3eaGRU0Vw49yQH13EHWpql5P2juMbgbthEutYOiXzu0OeYWc5xDxSK";
 
 
@@ -148,4 +149,14 @@ function displayTrait(data) {
   printTrait.innerHTML = breedTrait;
   catTraitDiv.appendChild(printTrait);
 
+}
+
+
+function selectCatTemperament(data){
+  const temperament = document.getElementById("selectCatTemperament");
+  for(var i = 0; i < 0; i++){
+      var option = document.createElement("option");
+      option.text = option.value = data[i][0];
+      temperament.add(option);
+  }
 }

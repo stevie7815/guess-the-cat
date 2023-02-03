@@ -1,5 +1,4 @@
 const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
-//const url = `https://api.thecatapi.com/v1/breeds&search?limit=12`;
 const api_key = "live_qtoWFwBFjh3eaGRU0Vw49yQH13EHWpql5P2juMbgbthEutYOiXzu0OeYWc5xDxSK";
 
 
@@ -14,8 +13,8 @@ fetch(url, {
   .then((data) => {
     console.log(data);
     console.table(data);
-    displayBreed(data)
-    displayTrait(data)
+    //displayBreed(data)
+    //displayTrait(data)
 
 
 
@@ -126,6 +125,9 @@ function btnClick(){
 
 }*/
 
+
+/*
+
 function displayBreed(data) {
 
   const catBreeds = data[0];
@@ -150,13 +152,14 @@ function displayTrait(data) {
   catTraitDiv.appendChild(printTrait);
 
 }
+*/
 
-
-function selectCatTemperament(data){
+function selectCatTemperament(imagesData){
   const temperament = document.getElementById("selectCatTemperament");
   for(var i = 0; i < 0; i++){
       var option = document.createElement("option");
-      option.text = option.value = data;
+      option.text = option.value = imagesData.breeds[0].temperament;
       temperament.add(option);
   }
 }
+window.onload = selectCatTemperament;

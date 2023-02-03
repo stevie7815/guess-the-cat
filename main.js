@@ -105,7 +105,11 @@ fetch(url, {
 
       let selectTemp = breed.breeds[0].temperament;
       option.value = i;
-      option.innerHTML = selectTemp;
+
+      //split regular expression - i.e. remove commas
+      let splitTemp = selectTemp.split(/[,]/);
+      console.table(splitTemp)
+      option.innerHTML = splitTemp;
       document.getElementById('selectCatTemperament').appendChild(option);
     }
   })

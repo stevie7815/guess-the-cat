@@ -1,5 +1,5 @@
-//const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
-const url = `https://api.thecatapi.com/v1/breeds`;
+const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
+//const url = `https://api.thecatapi.com/v1/breeds&search?limit=12`;
 const api_key = "live_qtoWFwBFjh3eaGRU0Vw49yQH13EHWpql5P2juMbgbthEutYOiXzu0OeYWc5xDxSK";
 
 
@@ -26,7 +26,7 @@ fetch(url, {
       //use the url from the image object
       image.src = `${imageData.url}`;
 
-      const cat = data[0];
+      const cat = imageData;
 
       // const catBreedsDiv = document.getElementById("catBreeds");
 
@@ -156,7 +156,7 @@ function selectCatTemperament(data){
   const temperament = document.getElementById("selectCatTemperament");
   for(var i = 0; i < 0; i++){
       var option = document.createElement("option");
-      option.text = option.value = data[i][0];
+      option.text = option.value = data;
       temperament.add(option);
   }
 }

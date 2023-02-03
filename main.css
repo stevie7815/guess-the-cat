@@ -38,6 +38,24 @@ h1 {
     padding: 10px 30px;
 }
 
+.brgrid {
+    background-color: #f4f1e9;
+    width: 300px;
+    border: 5px solid #688f4e;
+    padding: 50px;
+    margin: 20px;
+    position: absolute;
+}
+
+.brgrid:hover {
+    background-color: #b1d182;
+    color: #f4f1e9;
+    width: 300px;
+    border: 5px solid #688f4e;
+    padding: 50px;
+    margin: 20px;
+}
+
 .cat_image {
     margin: 0% 25% 0%;
     width: 50%;
@@ -54,36 +72,34 @@ h1 {
 
 /* CAT PICTURE GRID*/
 
-.content{
-  padding-top: 0%;
-  padding-left:0%;
+.content {
+    padding-top: 0%;
+    padding-left: 0%;
 }
 
-.clmn{
+.clmn {
     overflow: hidden;
     margin: 10px;
-    position: relative; 
+    position: relative;
     flex: 30%;
     height: 300px;
-    object-fit: none;
+    object-fit: contain;
 }
 
-.clmnShadow{
+.clmnShadow {
     box-shadow: 0 2px 4px 0 rgba(43, 70, 60, 0.5), 0 3px 10px 0 rgba(43, 70, 60, 0.5);
 
 }
 
 .clmn img {
-    display:block;
+    display: block;
     position: absolute;
     width: 100%;
     min-height: 100%;
-  }
-
-.imgrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-
+.imgrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

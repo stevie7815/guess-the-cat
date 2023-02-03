@@ -1,5 +1,4 @@
 const url = `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=true&mime_types=jpg,png`;
-
 const api_key = "live_qtoWFwBFjh3eaGRU0Vw49yQH13EHWpql5P2juMbgbthEutYOiXzu0OeYWc5xDxSK";
 
 
@@ -18,22 +17,59 @@ fetch(url, {
     displayTrait(data)
 
 
-    /*  let imagesData = data;
-      imagesData.map(function (imageData) {
-  
-        let image = document.createElement('img');
-        //use the url from the image object
-        image.src = `${imageData.url}`;
-  
-        let gridCell = document.createElement('div');
-        gridCell.classList.add('clmn');
-        gridCell.classList.add('clmnShadow');
-        gridCell.appendChild(image)
-  
-        document.getElementById('grid').appendChild(gridCell);
-  
-      });
+
+    let imagesData = data;
+    imagesData.map(function (imageData) {
+
+      let image = document.createElement('img');
+      //use the url from the image object
+      image.src = `${imageData.url}`;
+
+      const cat = data[0];
+
+      // const catBreedsDiv = document.getElementById("catBreeds");
+
+      const breedName = cat.breeds[0].name;
+      const showBrd = document.createElement("b");
+      showBrd.innerHTML = breedName;
+      //catBreedsDiv.appendChild(showBrd);
+
+
+      //const catTraitDiv = document.getElementById("catTrait");
+
+      const breedTrait = cat.breeds[0].temperament;
+      const showTrt = document.createElement("p");
+      showTrt.innerHTML = breedTrait;
+      //catTraitDiv.appendChild(showTrt);
+
+      let gridCell = document.createElement('div');
+      gridCell.classList.add('clmn');
+      gridCell.classList.add('clmnShadow');
+
+      gridCell.classList.add('brgrid');
+      gridCell.classList.add('brgrid:hover');
+      
+
+      gridCell.appendChild(image)
+
+
+      gridCell.appendChild(showBrd)
+      gridCell.appendChild(showTrt)
+      // gridCell.appendChild(printBreed)
+
+      /*
+       let gridBreed = document.createElement('div');
+       gridBreed.classList.add('brgrid');
+       gridBreed.classList.add('brgrid:hover');
+       gridBreed.appendChild(showBrd)
+       gridBreed.appendChild(showTrt)
   */
+
+      document.getElementById('grid').appendChild(gridCell);
+      // document.getElementById('grid').appendChild(gridBreed);
+
+
+    });
 
   })
 
@@ -42,17 +78,52 @@ fetch(url, {
   });
 
 
+/*
+function showBreedImage(data) {
+  storedBreeds = data;
+
+  document.getElementById("breed_image").src = storedBreeds[data].image.url;
+}
+*
 function displayImage(data) {
+  /*
+  const catBreedsDiv = document.getElementById("catImg");
 
-  const catImgDiv = document.getElementById("catImg");
+  const image = document.createElement("img");
+  image.src = `${data.url}`;
+  catBreedsDiv.appendChild(image);
+  //document.body.style.backgroundImage = "url(" + data.url + ")";
+*
 
-  const catImg = document.createElement("img");
-  catImg.src = data.url;
-  catBreedsDiv.appendChild(catImg);
-  document.body.style.backgroundImage = "url('" + data.url + "')";
+  let image = document.getElementById("catImag")
+  fetch(url)
+  .then(resp => resp.json())
+  .then(json => image.src = json[0].url)
 
 }
 
+function btnClick(){
+  let button = document.getElementById("catBtn")
+  button.addEventListener("click", displayImage)
+
+  document.addEventListener("DOMContentLoaded", () =>{
+    displayImage()
+    btnClick()
+  })
+}
+
+
+/*function displayCatInfo(data) {
+  for (i = 0; i <= 10; i++) {
+    let catType = data[i].breeds[0].name + data[i].breeds[0].temperament;
+    //console.log(data[i].breeds[0].name + data[i].breeds[0].temperament);
+  }
+  const catBreedsDiv = document.getElementById("catBreeds");
+  const printBreed = document.createElement("p");
+  printBreed.innerHTML = breedName;
+  catBreedsDiv.appendChild(printBreed);
+
+}*/
 
 function displayBreed(data) {
 
@@ -73,7 +144,7 @@ function displayTrait(data) {
   const catTraitDiv = document.getElementById("catTrait");
 
   const breedTrait = catTrait.breeds[0].temperament;
-  const printTrait = document.createElement("b");
+  const printTrait = document.createElement("p");
   printTrait.innerHTML = breedTrait;
   catTraitDiv.appendChild(printTrait);
 

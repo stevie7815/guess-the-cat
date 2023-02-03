@@ -48,7 +48,7 @@ fetch(url, {
 
       gridCell.classList.add('brgrid');
       gridCell.classList.add('brgrid:hover');
-      
+
 
       gridCell.appendChild(image)
 
@@ -68,15 +68,77 @@ fetch(url, {
       document.getElementById('grid').appendChild(gridCell);
       // document.getElementById('grid').appendChild(gridBreed);
 
+      /*  const catPlayTemp = document.getElementById("selectCatTemperament");
+        // numbers will start at 1948 and stop at 2010
+        for (var i = 0; i < 0; i++) {
+          var drpdwn = document.createElement("option");
+          drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
+          catPlayTemp.add(drpdwn);
+        }
+  
+        const catPlayBreed = document.getElementById("selectCatBreed");
+        // numbers will start at 1948 and stop at 2010
+        for (var i = 0; i < 0; i++) {
+          var drpdwn = document.createElement("option");
+          drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
+          catPlayBreed.add(drpdwn);
+        }
+        */
 
     });
+    
+    // show breed selection
+    for (let i=0; i<imagesData.length; i++){
+      const breed = imagesData[i];
+      let option = document.createElement('option');
 
+      selectBreed = breed.breeds[0].name;
+      option.value = i;
+      option.innerHTML = selectBreed;
+      document.getElementById('selectCatBreed').appendChild(option);
+    }
+
+    // show temperament selection
+    for (let i=0; i<imagesData.length; i++){
+      const breed = imagesData[i];
+      let option = document.createElement('option');
+
+      let selectTemp = breed.breeds[0].temperament;
+      option.value = i;
+      option.innerHTML = selectTemp;
+      document.getElementById('selectCatTemperament').appendChild(option);
+    }
   })
 
   .catch(function (error) {
     console.log("Fetch Error: ", error);
   });
+  
+/*
+  function selectCat(data) {
+    const cat = data;
 
+    const catPlayTemp = document.getElementById("selectCatTemperament");
+    // numbers will start at 1948 and stop at 2010
+    for (var i = 0; i < 0; i++) {
+      var drpdwn = document.createElement("option");
+      drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
+      catPlayTemp.add(drpdwn);
+    }
+  
+    const catPlayBreed = document.getElementById("selectCatBreed");
+    // numbers will start at 1948 and stop at 2010
+    for (var i = 0; i < 0; i++) {
+      var drpdwn = document.createElement("option");
+      drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
+      catPlayBreed.add(drpdwn);
+    }
+ //   catPlayTemp.onchange = function () { catGame() }
+   // catPlayBreed.onchange = function () { catGame() }
+  }
+  window.onload = selectCat;
+
+  
 
 /*
 function showBreedImage(data) {
@@ -154,12 +216,3 @@ function displayTrait(data) {
 }
 */
 
-function selectCatTemperament(imagesData){
-  const temperament = document.getElementById("selectCatTemperament");
-  for(var i = 0; i < 0; i++){
-      var option = document.createElement("option");
-      option.text = option.value = imagesData.breeds[0].temperament;
-      temperament.add(option);
-  }
-}
-window.onload = selectCatTemperament;

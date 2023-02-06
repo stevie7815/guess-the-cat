@@ -107,17 +107,16 @@ fetch(url, {
             //split regular expression - i.e. remove commas
             let splitTemp = selectTemp.split(/[,]/);
             console.table(splitTemp)
-            option.innerHTML = splitTemp;
+            //option.innerHTML = splitTemp[i];
+            for (let i = 0; i < splitTemp.length; i++) {
+              option.innerHTML = splitTemp[0];
+            }
+            
             document.getElementById('selectCatTemperament').appendChild(option);
 
           }
     
-
-
-          let choice = document.getElementsByClassName('brgrid');
-          if (breedName == selectCatBreed) {
-            choice.style.background = "gray";
-          }
+       
 
   })
 

@@ -31,6 +31,7 @@ fetch(url, {
 
       const breedName = cat.breeds[0].name;
       const showBrd = document.createElement("b");
+      showBrd.classList.add('breedClass')
       showBrd.innerHTML = breedName;
       //catBreedsDiv.appendChild(showBrd);
 
@@ -39,13 +40,13 @@ fetch(url, {
 
       const breedTrait = cat.breeds[0].temperament;
       const showTrt = document.createElement("p");
+      showTrt.classList.add('traitClass')
       showTrt.innerHTML = breedTrait;
       //catTraitDiv.appendChild(showTrt);
 
       let gridCell = document.createElement('div');
       gridCell.classList.add('clmn');
       gridCell.classList.add('clmnShadow');
-
       gridCell.classList.add('brgrid');
       gridCell.classList.add('brgrid:hover');
 
@@ -85,43 +86,80 @@ fetch(url, {
 
     });
 
-          // show breed selection
-          for (let i = 0; i < imagesData.length; i++) {
-            const breed = imagesData[i];
-            let option = document.createElement('option');
-    
-            selectBreed = breed.breeds[0].name;
-            option.value = i;
-            option.innerHTML = selectBreed;
-            document.getElementById('selectCatBreed').appendChild(option);
-          }
-    
-          // show temperament selection
-          for (let i = 0; i < imagesData.length; i++) {
-            const breed = imagesData[i];
-            let option = document.createElement('option');
-    
-            let selectTemp = breed.breeds[0].temperament;
-            option.value = i;
-    
-            //split regular expression - i.e. remove commas
-            let splitTemp = selectTemp.split(/[,]/);
-            console.table(splitTemp)
-            //option.innerHTML = splitTemp[i];
-            for (let i = 0; i < splitTemp.length; i++) {
-              option.innerHTML = splitTemp[0];
-            }
-            
-            document.getElementById('selectCatTemperament').appendChild(option);
+    // show breed selection
+    for (let i = 0; i < imagesData.length; i++) {
+      const breed = imagesData[i];
+      let option = document.createElement('option');
 
-          }
-    
-       
+      selectBreed = breed.breeds[0].name;
+      option.value = i;
+      option.innerHTML = selectBreed;
+      document.getElementById('selectCatBreed').appendChild(option);
+    }
+
+    // show temperament selection
+    for (let i = 0; i < imagesData.length; i++) {
+      const breed = imagesData[i];
+      let option = document.createElement('option');
+
+      let selectTemp = breed.breeds[0].temperament;
+      option.value = i;
+
+      //split regular expression - i.e. remove commas
+      let splitTemp = selectTemp.split(/[,]/);
+     // console.table(splitTemp)
+      //option.innerHTML = splitTemp[i];
+
+      for (let i = 0; i < splitTemp.length; i++) {
+        const singleValue = splitTemp[0];
+        option.value = i
+        option.innerHTML = singleValue
+
+        document.getElementById('selectCatTemperament').appendChild(option);
+      }
+    }
+
+
+    // BUTTON WILL WORK WHEN PRESS ENTER
+    // Get the input field
+    var input = document.getElementById("selectCatTemperament");
+
+    // Execute a function when the user presses a key on the keyboard
+    input.addEventListener("keypress", function (event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("myBtn").click();
+      }
+    //  console.log(selectCatBreed)
+
+      /*
+      const buttonBreed = document.querySelector('button');
+      buttonBreed.addEventListener('click', () =>{
+        const element = document.querySelector('.')
+      })
+      */
+
+      let drpdwnGet = document.getElementsByName(catTemperament)[0];
+      drpdwnGet.addEventListener("change", changeDrpdwn)
+      function changeDrpdwn(){
+        let value = drpdwnGet.options[drpdwnGet.selectedIndex].ooption;
+        console.log(value);
+      }
+      //on page load
+      changeDrpdwn();
+
+    });
+
+
+
 
   })
 
 
-  
+
   .catch(function (error) {
     console.log("Fetch Error: ", error);
   });
@@ -129,7 +167,7 @@ fetch(url, {
 
 
 
-  
+
 
 /*
   function selectCat(data) {

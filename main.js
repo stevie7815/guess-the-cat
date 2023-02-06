@@ -86,16 +86,28 @@ fetch(url, {
 
     });
 
-    // show breed selection
-    for (let i = 0; i < imagesData.length; i++) {
-      const breed = imagesData[i];
-      let option = document.createElement('option');
 
-      selectBreed = breed.breeds[0].name;
-      option.value = i;
-      option.innerHTML = selectBreed;
-      document.getElementById('selectCatBreed').appendChild(option);
-    }
+    // show breed selection
+    let select = document.getElementById("selectCatBreed");
+
+        for (let i = 0; i < imagesData.length; i++) {
+          const breed = imagesData[i];
+          let option = document.createElement('option');
+    
+          selectBreed = breed.breeds[0].name;
+          option.value = i;
+          option.innerHTML = selectBreed;
+          select.appendChild(option);
+        }
+
+    // discover value - this only shows index number
+    select.addEventListener("change", e => {
+      const value = e.target.value;
+      console.log(value);
+    })
+
+
+
 
     // show temperament selection
     for (let i = 0; i < imagesData.length; i++) {
@@ -107,7 +119,7 @@ fetch(url, {
 
       //split regular expression - i.e. remove commas
       let splitTemp = selectTemp.split(/[,]/);
-     // console.table(splitTemp)
+      // console.table(splitTemp)
       //option.innerHTML = splitTemp[i];
 
       for (let i = 0; i < splitTemp.length; i++) {
@@ -133,7 +145,7 @@ fetch(url, {
         // Trigger the button element with a click
         document.getElementById("myBtn").click();
       }
-    //  console.log(selectCatBreed)
+      //  console.log(selectCatBreed)
 
       /*
       const buttonBreed = document.querySelector('button');
@@ -142,14 +154,17 @@ fetch(url, {
       })
       */
 
+      /*
       let drpdwnGet = document.getElementsByName(catTemperament)[0];
       drpdwnGet.addEventListener("change", changeDrpdwn)
       function changeDrpdwn(){
-        let value = drpdwnGet.options[drpdwnGet.selectedIndex].ooption;
+        let value = drpdwnGet.options[drpdwnGet.selectedIndex].option;
         console.log(value);
       }
       //on page load
       changeDrpdwn();
+*/
+
 
     });
 

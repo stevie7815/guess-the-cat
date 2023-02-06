@@ -55,17 +55,15 @@ fetch(url, {
 
       gridCell.appendChild(showBrd)
       gridCell.appendChild(showTrt)
-      // gridCell.appendChild(printBreed)
-
-      /*
-       let gridBreed = document.createElement('div');
-       gridBreed.classList.add('brgrid');
-       gridBreed.classList.add('brgrid:hover');
-       gridBreed.appendChild(showBrd)
-       gridBreed.appendChild(showTrt)
-  */
 
       document.getElementById('grid').appendChild(gridCell);
+
+
+
+
+
+
+
       // document.getElementById('grid').appendChild(gridBreed);
 
       /*  const catPlayTemp = document.getElementById("selectCatTemperament");
@@ -86,38 +84,54 @@ fetch(url, {
         */
 
     });
+
+          // show breed selection
+          for (let i = 0; i < imagesData.length; i++) {
+            const breed = imagesData[i];
+            let option = document.createElement('option');
     
-    // show breed selection
-    for (let i=0; i<imagesData.length; i++){
-      const breed = imagesData[i];
-      let option = document.createElement('option');
+            selectBreed = breed.breeds[0].name;
+            option.value = i;
+            option.innerHTML = selectBreed;
+            document.getElementById('selectCatBreed').appendChild(option);
+          }
+    
+          // show temperament selection
+          for (let i = 0; i < imagesData.length; i++) {
+            const breed = imagesData[i];
+            let option = document.createElement('option');
+    
+            let selectTemp = breed.breeds[0].temperament;
+            option.value = i;
+    
+            //split regular expression - i.e. remove commas
+            let splitTemp = selectTemp.split(/[,]/);
+            console.table(splitTemp)
+            option.innerHTML = splitTemp;
+            document.getElementById('selectCatTemperament').appendChild(option);
 
-      selectBreed = breed.breeds[0].name;
-      option.value = i;
-      option.innerHTML = selectBreed;
-      document.getElementById('selectCatBreed').appendChild(option);
-    }
+          }
+    
 
-    // show temperament selection
-    for (let i=0; i<imagesData.length; i++){
-      const breed = imagesData[i];
-      let option = document.createElement('option');
 
-      let selectTemp = breed.breeds[0].temperament;
-      option.value = i;
+          let choice = document.getElementsByClassName('brgrid');
+          if (breedName == selectCatBreed) {
+            choice.style.background = "gray";
+          }
 
-      //split regular expression - i.e. remove commas
-      let splitTemp = selectTemp.split(/[,]/);
-      console.table(splitTemp)
-      option.innerHTML = splitTemp;
-      document.getElementById('selectCatTemperament').appendChild(option);
-    }
   })
 
+
+  
   .catch(function (error) {
     console.log("Fetch Error: ", error);
   });
+
+
+
+
   
+
 /*
   function selectCat(data) {
     const cat = data;

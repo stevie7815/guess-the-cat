@@ -90,22 +90,37 @@ fetch(url, {
     // show breed selection
     let select = document.getElementById("selectCatBreed");
 
-        for (let i = 0; i < imagesData.length; i++) {
-          const breed = imagesData[i];
-          let option = document.createElement('option');
-    
-          selectBreed = breed.breeds[0].name;
-          option.value = i;
-          option.innerHTML = selectBreed;
-          select.appendChild(option);
+    for (let i = 0; i < imagesData.length; i++) {
+      const breed = imagesData[i];
+      let option = document.createElement('option');
+
+      selectBreed = breed.breeds[0].name;
+      option.value = i;
+      option.innerHTML = selectBreed;
+      select.appendChild(option);
+    }
+
+    // discover value/text -  displays dropdown selected option in console
+    select.addEventListener("change", e => {
+      var value =
+        select.options[select.selectedIndex].text;
+      console.log(value);
+
+      //let black = 'rgb(0,0,0)';
+      //  let red = 'rgb(255,0,0)';
+
+      // let findBreed = document.getElementsByClassName("breedClass")
+      console.log(selectBreed)
+      let box = document.getElementById("brgrid");
+      for (let i = 0; selectBreed.length; i++) {
+        if (value == selectBreed) {
+          box.style.fontSize = "30px";
         }
 
-    // discover value - this only shows index number
-    select.addEventListener("change", e => {
-      const value = e.target.value;
-      console.log(value);
-    })
+      }
 
+    })
+ 
 
 
 

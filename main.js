@@ -64,9 +64,6 @@ fetch(url, {
 
 
 
-
-
-
       // document.getElementById('grid').appendChild(gridBreed);
 
       /*  const catPlayTemp = document.getElementById("selectCatTemperament");

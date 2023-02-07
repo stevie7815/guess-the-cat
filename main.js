@@ -50,6 +50,8 @@ fetch(url, {
       gridCell.classList.add('brgrid');
       gridCell.classList.add('brgrid:hover');
 
+      gridCell.id = String(breedName)
+
 
       gridCell.appendChild(image)
 
@@ -102,26 +104,19 @@ fetch(url, {
 
     // discover value/text -  displays dropdown selected option in console
     select.addEventListener("change", e => {
-      var value =
-        select.options[select.selectedIndex].text;
+      var value = select.options[select.selectedIndex].text;
       console.log(value);
-
-      //let black = 'rgb(0,0,0)';
-      //  let red = 'rgb(255,0,0)';
-
-      // let findBreed = document.getElementsByClassName("breedClass")
-      console.log(selectBreed)
-      let box = document.getElementById("brgrid");
-      for (let i = 0; selectBreed.length; i++) {
-        if (value == selectBreed) {
-          box.style.fontSize = "30px";
-        }
+   
+      if(selectBreed == value){
+        document.getElementById(value).style.backgroundColor = '#f55bf0'
+      } else if(selectBreed != value){
+        document.getElementById(value).style.backgroundColor = '#ff0000'
 
       }
-
+    
     })
- 
 
+    console.log(selectBreed)
 
 
     // show temperament selection
@@ -134,8 +129,8 @@ fetch(url, {
 
       //split regular expression - i.e. remove commas
       let splitTemp = selectTemp.split(/[,]/);
-      // console.table(splitTemp)
-      //option.innerHTML = splitTemp[i];
+      console.table(splitTemp)
+      option.innerHTML = splitTemp[i];
 
       for (let i = 0; i < splitTemp.length; i++) {
         const singleValue = splitTemp[0];
@@ -146,20 +141,21 @@ fetch(url, {
       }
     }
 
+    /*
+    input.addEventListener("change", function testColour(event){
+      let box = document.getElementById("brgrid");
+      for (let i = 0; selectBreed.length; i++) {
+        if (breedName == selectBreed) {
+          box.style.border = "1px solid red" ;
+        }
 
-    // BUTTON WILL WORK WHEN PRESS ENTER
-    // Get the input field
-    var input = document.getElementById("selectCatTemperament");
-
-    // Execute a function when the user presses a key on the keyboard
-    input.addEventListener("keypress", function (event) {
-      // If the user presses the "Enter" key on the keyboard
-      if (event.key === "Enter") {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        document.getElementById("myBtn").click();
       }
+      
+    })
+    */
+
+
+      
       //  console.log(selectCatBreed)
 
       /*
@@ -181,7 +177,6 @@ fetch(url, {
 */
 
 
-    });
 
 
 
@@ -195,9 +190,22 @@ fetch(url, {
   });
 
 
+/*
+function testColour() {
+  alert('this is working')
+  document.getElementById("breedBtn").click();
+  
+  //let findBreed = document.getElementsByClassName("breedClass")
+  console.log(selectBreed)
+  let box = document.getElementById("brgrid");
+  for (let i = 0; selectBreed.length; i++) {
+    if (breedName == selectBreed) {
+      box.style.border = "1px solid red" ;
+    }
+  }
 
-
-
+  }
+*/
 
 /*
   function selectCat(data) {

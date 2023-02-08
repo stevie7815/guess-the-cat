@@ -30,6 +30,16 @@ h1 {
     font-weight: bold;
 }
 
+#playAgainMessage{
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#disableButton{
+    color: red;
+}
+
 #wrapper {
     font-family: helvetica, sans-serif;
     width: 95%;
@@ -100,3 +110,5 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+

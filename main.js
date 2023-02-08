@@ -17,7 +17,8 @@ fetch(url, {
     //displayTrait(data)
 
 
-
+    const newGame = document.querySelector('#newGame');
+    newGame.addEventListener('click', () => {
     let imagesData = data;
     imagesData.map(function (imageData) {
 
@@ -27,22 +28,18 @@ fetch(url, {
 
       const cat = imageData;
 
-      // const catBreedsDiv = document.getElementById("catBreeds");
 
       const breedName = cat.breeds[0].name;
       const showBrd = document.createElement("b");
       showBrd.classList.add('breedClass')
       showBrd.innerHTML = breedName;
-      //catBreedsDiv.appendChild(showBrd);
 
 
-      //const catTraitDiv = document.getElementById("catTrait");
 
       const breedTrait = cat.breeds[0].temperament;
       const showTrt = document.createElement("p");
       showTrt.classList.add('traitClass')
       showTrt.innerHTML = breedTrait;
-      //catTraitDiv.appendChild(showTrt);
 
       let gridCell = document.createElement('div');
       gridCell.classList.add('clmn');
@@ -51,6 +48,7 @@ fetch(url, {
       gridCell.classList.add('brgrid:hover');
 
       gridCell.id = String(breedName)
+      showTrt.id = String(breedTrait)
 
 
       gridCell.appendChild(image)
@@ -61,7 +59,10 @@ fetch(url, {
 
       document.getElementById('grid').appendChild(gridCell);
 
+     
+     
 
+      
 
 
       // document.getElementById('grid').appendChild(gridBreed);
@@ -103,18 +104,41 @@ fetch(url, {
     select.addEventListener("change", e => {
       var value = select.options[select.selectedIndex].text;
       console.log(value);
-   
-      if(selectBreed == value){
-        document.getElementById(value).style.backgroundColor = '#f55bf0'
-      } else if(selectBreed != value){
-        document.getElementById(value).style.backgroundColor = '#ff0000'
 
-      }
-    
+      const buttonBreed = document.querySelector('#buttonBreed');
+      buttonBreed.addEventListener('click', () => {
+        // if cat breed matches
+        if (selectBreed == value) {
+          document.getElementById(value).style.backgroundColor = '#688f4e'
+          document.getElementById(value).style.color = '#fff'
+          document.getElementById("playAgainMessage").innerHTML = "Congratulations! Play again soon!"
+          // if cat breed does not match
+        } else if (selectBreed != value) {
+          document.getElementById(value).style.backgroundColor = '#DB636C'
+          document.getElementById(value).style.color = '#fff'
+          document.getElementById("playAgainMessage").innerHTML = "Try again!"
+        }
+
+
+        const disableButton = () => {
+            button.disabled = true;
+        
+        };
+        
+        buttonBreed.addEventListener('click', disableButton);
+        document.getElementById("disableButton").innerHTML = "Start a new game"
+
+      })
     })
+
+
+
 
     console.log(selectBreed)
 
+
+
+    let selectCatTemp = document.getElementById("selectCatTemperament");
 
     // show temperament selection
     for (let i = 0; i < imagesData.length; i++) {
@@ -126,7 +150,7 @@ fetch(url, {
 
       //split regular expression - i.e. remove commas
       let splitTemp = selectTemp.split(/[,]/);
-      console.table(splitTemp)
+      // console.table(splitTemp)
       option.innerHTML = splitTemp[i];
 
       for (let i = 0; i < splitTemp.length; i++) {
@@ -134,52 +158,34 @@ fetch(url, {
         option.value = i
         option.innerHTML = singleValue
 
-        document.getElementById('selectCatTemperament').appendChild(option);
+        selectCatTemp.appendChild(option);
       }
+
+      //console.log(splitTemp)
+      console.log(splitTemp[0])
+
+
     }
+    // discover value/text -  displays dropdown selected option in console
+    selectCatTemp.addEventListener("change", e => {
+      var valueTemp = selectCatTemp.options[selectCatTemp.selectedIndex].text;
+      console.log(valueTemp);
 
-    /*
-    input.addEventListener("change", function testColour(event){
-      let box = document.getElementById("brgrid");
-      for (let i = 0; selectBreed.length; i++) {
-        if (breedName == selectBreed) {
-          box.style.border = "1px solid red" ;
-        }
+      if (splitTemp.includes(valueTemp)) {
+        document.getElementsByClassName(valueTemp).style.backgroundColor = '#688f4e'
+        document.getElementsByClassName(valueTemp).style.color = '#fff'
+
+      } else {
+        document.getElementById(valueTemp).style.backgroundColor = '#DB636C'
+        document.getElementById(valueTemp).style.color = '#fff'
 
       }
-      
     })
-    */
-
-
-      
-      //  console.log(selectCatBreed)
-
-      /*
-      const buttonBreed = document.querySelector('button');
-      buttonBreed.addEventListener('click', () =>{
-        const element = document.querySelector('.')
-      })
-      */
-
-      /*
-      let drpdwnGet = document.getElementsByName(catTemperament)[0];
-      drpdwnGet.addEventListener("change", changeDrpdwn)
-      function changeDrpdwn(){
-        let value = drpdwnGet.options[drpdwnGet.selectedIndex].option;
-        console.log(value);
-      }
-      //on page load
-      changeDrpdwn();
-*/
-
-
-
-
 
 
   })
 
+})
 
 
   .catch(function (error) {

@@ -18,6 +18,63 @@ footer {
     text-align: center;
 }
 
+/* BUTTON CSS */
+
+#btnContainer {
+    text-align: center;
+    width: auto;
+    height: auto;
+}
+
+.game {
+    border: none;
+    border-radius: 6px;
+    color: #f4f1e9;
+    display: inline-block;
+    font-size: 16px;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#quitGame {
+    background-color: #DB636C;
+}
+#quitGame:hover{
+    background-color: #FA707C;
+    color: #fff;
+}
+
+#startGame {
+    background-color: #688f4e;
+}
+#startGame:hover {
+    background-color: #7FAD5F;
+    color:#fff
+}
+
+.btnGame{
+    background-color: #f4f1e9;
+    border: 2px solid #688f4e;
+    border-radius: 4px;
+    color: #688f4e;
+    display: inline-block;
+    padding: 2px 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.btnGame:hover{
+    background-color: #688f4e;
+    color: #f4f1e9;
+}
+
+
+
+#disableButton {
+    color: red;
+}
+
+/* MAIN BODY */
 h1 {
     text-align: center;
     font-size: 75px;
@@ -30,14 +87,10 @@ h1 {
     font-weight: bold;
 }
 
-#playAgainMessage{
+#playAgainMessage {
     text-align: center;
     font-weight: bold;
 
-}
-
-#disableButton{
-    color: red;
 }
 
 #wrapper {
@@ -48,6 +101,7 @@ h1 {
     padding: 10px 30px;
 }
 
+/* GRID AESTHETIC */
 .brgrid {
     background-color: #f4f1e9;
     width: 300px;
@@ -78,7 +132,7 @@ h1 {
 }
 
 
-/* CAT PICTURE GRID*/
+/* CAT  GRID LAYOUT */
 
 .content {
     padding-top: 0%;
@@ -110,5 +164,3 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-

@@ -13,13 +13,67 @@ fetch(url, {
   .then((data) => {
     console.log(data);
     console.table(data);
-    //displayBreed(data)
-    //displayTrait(data)
+
 
 
     const startGame = document.querySelector('#startGame');
     startGame.addEventListener('click', () => {
-     
+
+      let imagesData = data;
+      imagesData.map(function (imageData) {
+
+
+        let image = document.createElement('img');
+        //use the url from the image object
+        image.src = `${imageData.url}`;
+
+        const cat = imageData;
+
+
+        const breedName = cat.breeds[0].name;
+        const showBrd = document.createElement("b");
+        showBrd.classList.add('breedClass')
+        showBrd.innerHTML = breedName;
+
+
+
+        const breedTrait = cat.breeds[0].temperament;
+        const showTrt = document.createElement("p");
+        showTrt.classList.add('traitClass')
+        showTrt.innerHTML = breedTrait;
+
+        let gridCell = document.createElement('div');
+
+
+        // apply CSS to grid cells
+        gridCell.classList.add('clmn');
+        gridCell.classList.add('clmnShadow');
+        gridCell.classList.add('brgrid');
+        gridCell.classList.add('brgrid:hover');
+
+        gridCell.id = String(breedName)
+        showTrt.id = String(breedTrait)
+
+
+        gridCell.appendChild(image)
+
+
+        gridCell.appendChild(showBrd)
+        gridCell.appendChild(showTrt)
+
+
+        document.getElementById('grid').appendChild(gridCell);
+        document.getElementById("hint").innerHTML = "hint";
+        document.getElementById("more").innerHTML = "more cats!";
+
+      });
+
+
+      // ADD MORE CATS TO THE GRID //
+      //add more cats when button clicked
+      const more = document.querySelector('#more');
+      more.addEventListener('click', () => {
+
         let imagesData = data;
         imagesData.map(function (imageData) {
 
@@ -37,13 +91,15 @@ fetch(url, {
           showBrd.innerHTML = breedName;
 
 
-
           const breedTrait = cat.breeds[0].temperament;
           const showTrt = document.createElement("p");
           showTrt.classList.add('traitClass')
           showTrt.innerHTML = breedTrait;
 
           let gridCell = document.createElement('div');
+
+
+          // apply CSS to grid cells
           gridCell.classList.add('clmn');
           gridCell.classList.add('clmnShadow');
           gridCell.classList.add('brgrid');
@@ -59,30 +115,9 @@ fetch(url, {
           gridCell.appendChild(showBrd)
           gridCell.appendChild(showTrt)
 
+
           document.getElementById('grid').appendChild(gridCell);
-
-
-
-
-
-          // document.getElementById('grid').appendChild(gridBreed);
-
-          /*  const catPlayTemp = document.getElementById("selectCatTemperament");
-            // numbers will start at 1948 and stop at 2010
-            for (var i = 0; i < 0; i++) {
-              var drpdwn = document.createElement("option");
-              drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
-              catPlayTemp.add(drpdwn);
-            }
-      
-            const catPlayBreed = document.getElementById("selectCatBreed");
-            // numbers will start at 1948 and stop at 2010
-            for (var i = 0; i < 0; i++) {
-              var drpdwn = document.createElement("option");
-              drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
-              catPlayBreed.add(drpdwn);
-            }
-            */
+          document.getElementById("moreText").innerHTML = "Can you win against so many cats?";
 
         });
 
@@ -95,10 +130,20 @@ fetch(url, {
           let option = document.createElement('option');
 
           selectBreed = breed.breeds[0].name;
+          hintBreed = breed.breeds[0].temperament;
           option.value = i;
           option.innerHTML = selectBreed;
           select.appendChild(option);
+
+
         }
+
+        const buttonBreed = document.querySelector('#hint');
+        buttonBreed.addEventListener('click', () => {
+          let hint = hintBreed
+          document.getElementById("hintMessage").innerHTML = hint;
+
+        })
 
         // discover value/text -  displays dropdown selected option in console
         select.addEventListener("change", e => {
@@ -107,28 +152,35 @@ fetch(url, {
 
           const buttonBreed = document.querySelector('#buttonBreed');
           buttonBreed.addEventListener('click', () => {
-            // if cat breed matches
+            // if cat breed matches - change colour and display message
             if (selectBreed == value) {
               document.getElementById(value).style.backgroundColor = '#688f4e'
               document.getElementById(value).style.color = '#fff'
               document.getElementById("playAgainMessage").innerHTML = "Congratulations! Play again soon!"
-              // if cat breed does not match
+
+              // if cat breed does not match - change cell colour and add message
             } else if (selectBreed != value) {
               document.getElementById(value).style.backgroundColor = '#DB636C'
               document.getElementById(value).style.color = '#fff'
               document.getElementById("playAgainMessage").innerHTML = "Try again!"
             }
 
-
+            /*
+            // DISABLE BUTTON AFTER IT HAS BEEN CLICKED
             const disableButton = () => {
               button.disabled = true;
-
+  
             };
-
+  
             buttonBreed.addEventListener('click', disableButton);
             document.getElementById("disableButton").innerHTML = "Start a new game"
-
+  */
           })
+        })
+
+        const startGame = document.querySelector('#quitGame');
+        startGame.addEventListener('click', () => {
+          alert("Play again soon!")
         })
 
 
@@ -166,16 +218,20 @@ fetch(url, {
 
 
         }
+
         // discover value/text -  displays dropdown selected option in console
         selectCatTemp.addEventListener("change", e => {
           var valueTemp = selectCatTemp.options[selectCatTemp.selectedIndex].text;
           console.log(valueTemp);
 
+          // if temperament matches, change background colour and font colour
           if (splitTemp.includes(valueTemp)) {
             document.getElementsByClassName(valueTemp).style.backgroundColor = '#688f4e'
             document.getElementsByClassName(valueTemp).style.color = '#fff'
 
-          } else {
+          }
+          // if temperament does not match, change background colour and font colour
+          else {
             document.getElementById(valueTemp).style.backgroundColor = '#DB636C'
             document.getElementById(valueTemp).style.color = '#fff'
 
@@ -184,130 +240,12 @@ fetch(url, {
 
 
       })
-
     })
 
-      .catch(function (error) {
-        console.log("Fetch Error: ", error);
-      });
-
-
-/*
-function testColour() {
-  alert('this is working')
-  document.getElementById("breedBtn").click();
-  
-  //let findBreed = document.getElementsByClassName("breedClass")
-  console.log(selectBreed)
-  let box = document.getElementById("brgrid");
-  for (let i = 0; selectBreed.length; i++) {
-    if (breedName == selectBreed) {
-      box.style.border = "1px solid red" ;
-    }
-  }
-
-  }
-*/
-
-/*
-  function selectCat(data) {
-    const cat = data;
-
-    const catPlayTemp = document.getElementById("selectCatTemperament");
-    // numbers will start at 1948 and stop at 2010
-    for (var i = 0; i < 0; i++) {
-      var drpdwn = document.createElement("option");
-      drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
-      catPlayTemp.add(drpdwn);
-    }
-  
-    const catPlayBreed = document.getElementById("selectCatBreed");
-    // numbers will start at 1948 and stop at 2010
-    for (var i = 0; i < 0; i++) {
-      var drpdwn = document.createElement("option");
-      drpdwn.text = drpdwn.value = cat.breeds[0].temperament;
-      catPlayBreed.add(drpdwn);
-    }
- //   catPlayTemp.onchange = function () { catGame() }
-   // catPlayBreed.onchange = function () { catGame() }
-  }
-  window.onload = selectCat;
-
-  
-
-/*
-function showBreedImage(data) {
-  storedBreeds = data;
-
-  document.getElementById("breed_image").src = storedBreeds[data].image.url;
-}
-*
-function displayImage(data) {
-  /*
-  const catBreedsDiv = document.getElementById("catImg");
-
-  const image = document.createElement("img");
-  image.src = `${data.url}`;
-  catBreedsDiv.appendChild(image);
-  //document.body.style.backgroundImage = "url(" + data.url + ")";
-*
-
-  let image = document.getElementById("catImag")
-  fetch(url)
-  .then(resp => resp.json())
-  .then(json => image.src = json[0].url)
-
-}
-
-function btnClick(){
-  let button = document.getElementById("catBtn")
-  button.addEventListener("click", displayImage)
-
-  document.addEventListener("DOMContentLoaded", () =>{
-    displayImage()
-    btnClick()
   })
-}
 
-
-/*function displayCatInfo(data) {
-  for (i = 0; i <= 10; i++) {
-    let catType = data[i].breeds[0].name + data[i].breeds[0].temperament;
-    //console.log(data[i].breeds[0].name + data[i].breeds[0].temperament);
-  }
-  const catBreedsDiv = document.getElementById("catBreeds");
-  const printBreed = document.createElement("p");
-  printBreed.innerHTML = breedName;
-  catBreedsDiv.appendChild(printBreed);
-
-}*/
-
-
-/*
-
-function displayBreed(data) {
-
-  const catBreeds = data[0];
-
-  const catBreedsDiv = document.getElementById("catBreeds");
-
-  const breedName = catBreeds.breeds[0].name;
-  const printBreed = document.createElement("b");
-  printBreed.innerHTML = breedName;
-  catBreedsDiv.appendChild(printBreed);
-
-}
-
-function displayTrait(data) {
-  const catTrait = data[0];
-
-  const catTraitDiv = document.getElementById("catTrait");
-
-  const breedTrait = catTrait.breeds[0].temperament;
-  const printTrait = document.createElement("p");
-  printTrait.innerHTML = breedTrait;
-  catTraitDiv.appendChild(printTrait);
-
-}
-*/
+  // console.log error if error occurs during fetch
+  .catch(function (error) {
+    console.log("Fetch Error: ", error);
+  });
 

@@ -120,7 +120,7 @@ fetch(url, {
           document.getElementById("moreText").innerHTML = "Can you win against so many cats?";
 
         });
-
+      })
 
         // show breed selection
         let select = document.getElementById("selectCatBreed");
@@ -178,16 +178,13 @@ fetch(url, {
           })
         })
 
-        const startGame = document.querySelector('#quitGame');
-        startGame.addEventListener('click', () => {
-          alert("Play again soon!")
-        })
 
 
 
 
+
+        // check that selectBreed shows one breed
         console.log(selectBreed)
-
 
 
         let selectCatTemp = document.getElementById("selectCatTemperament");
@@ -197,6 +194,7 @@ fetch(url, {
           const breed = imagesData[i];
           let option = document.createElement('option');
 
+          // retrieve temperament of cat breeds
           let selectTemp = breed.breeds[0].temperament;
           option.value = i;
 
@@ -239,9 +237,17 @@ fetch(url, {
         })
 
 
-      })
+     
+
     })
 
+    // BUTTON TO QUIT GAME
+    const quitGame = document.querySelector('#quitGame');
+    // even listener to perform action when clicked
+    quitGame.addEventListener('click', () => {
+      // send alert when game is quit
+      alert("Play again soon!")
+    })
   })
 
   // console.log error if error occurs during fetch

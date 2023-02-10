@@ -202,14 +202,8 @@ fetch(url, {
         })
       })
 
-
-
-
-
-
       // check that selectBreed shows one breed
       console.log(selectBreed)
-
 
       let selectCatTemp = document.getElementById("selectCatTemperament");
 
@@ -237,8 +231,6 @@ fetch(url, {
 
         //console.log(splitTemp)
         console.log(splitTemp[0])
-
-
       }
 
       // discover value/text -  displays dropdown selected option in console
@@ -259,9 +251,6 @@ fetch(url, {
 
         }
       })
-
-
-
 
     })
 
